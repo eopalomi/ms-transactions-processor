@@ -7,17 +7,19 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { PrelationCrudService } from '../services/prelation-crud.service';
-import { CreatePrelationCrudDto } from '../dto/create-prelation-crud.dto';
+import { TransactionsProcessorService } from '../services/transacctions-processor.service';
+import { CreateTransactionDto } from '../dto/create-prelation-crud.dto';
 import { UpdatePrelationCrudDto } from '../dto/update-prelation-crud.dto';
 
 @Controller('prelation-crud')
 export class PrelationCrudController {
-  constructor(private readonly prelationCrudService: PrelationCrudService) {}
+  constructor(
+    private readonly prelationCrudService: TransactionsProcessorService,
+  ) {}
 
   @Post()
-  create(@Body() createPrelationCrudDto: CreatePrelationCrudDto) {
-    return this.prelationCrudService.create(createPrelationCrudDto);
+  create(@Body() createTransactionDto: CreateTransactionDto) {
+    return this.prelationCrudService.create(createTransactionDto);
   }
 
   @Get()

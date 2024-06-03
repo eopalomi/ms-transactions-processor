@@ -1,12 +1,23 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { PrelationCrudModule } from './prelation-crud/prelation-crud.module';
+import { TransacctionsProcessorModule } from './modules/transactions-processor/transacctions-processor.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { ConfigModule } from '@nestjs/config';
+import { EnvConfiguration } from '@src/libs/config/env.config';
+import { configSchema } from '@src/libs/config/config.schema';
+import { DatabaseModule } from './libs/database/database.module';
 
 @Module({
-  imports: [PrelationCrudModule, EventEmitterModule.forRoot()],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TransacctionsProcessorModule,
+    DatabaseModule,
+    EventEmitterModule.forRoot(),
+    ConfigModule.forRoot({
+      load: [EnvConfiguration],
+      validationSchema: configSchema,
+      isGlobal: true,
+    }),
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

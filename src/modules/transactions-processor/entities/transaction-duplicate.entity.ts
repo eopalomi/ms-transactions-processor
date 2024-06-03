@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity({ name: 'recaud.tbtrxonl' })
-export class Tbtrxonl {
-  @PrimaryGeneratedColumn({ name: 'id_trxonl' })
+@Entity({ schema: 'recaud', name: 'tbtrxdup' })
+export class TransactionDuplicatePgEntity {
+  @PrimaryGeneratedColumn({ name: 'id_trxdup' })
   idTrxonl: number;
 
   @Column({ name: 'co_franqu', type: 'smallint' })
@@ -12,7 +12,7 @@ export class Tbtrxonl {
   coCancom: string;
 
   @Column({ name: 'fe_locale', type: 'date' })
-  feLocale: Date;
+  feLocale: string;
 
   @Column({ name: 'ho_locale', type: 'time' })
   hoLocale: string;
