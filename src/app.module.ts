@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { EnvConfiguration } from '@src/libs/config/env.config';
 import { configSchema } from '@src/libs/config/config.schema';
 import { DatabaseModule } from './libs/database/database.module';
+import { TransactionsOnlineModule } from './modules/transactions-online/transactions-online.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { DatabaseModule } from './libs/database/database.module';
       validationSchema: configSchema,
       isGlobal: true,
     }),
+    TransactionsOnlineModule,
   ],
   controllers: [],
   providers: [],
